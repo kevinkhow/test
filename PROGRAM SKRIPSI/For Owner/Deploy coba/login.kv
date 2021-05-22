@@ -1,0 +1,111 @@
+ScreenManager:
+    id:screen_manager
+    Screen:
+        name:"screen1"
+        MDCard:
+            size_hint:None,None
+            size:300,500
+            pos_hint:{"center_x": 0.5,"center_y":0.5}
+            elevation:10
+            padding:25
+            spacing:25
+            orientation:'vertical'
+            MDLabel:
+                id:welcome_label
+                text:"Welcome"
+                font_size:35
+                halign:'center'
+                size_hint_y:None
+                height:self.texture_size[1]
+                padding_y:15
+            MDTextField:
+                id:user
+                hint_text:"Username"
+                helper_text:"Username Gabole Kosong"
+                helper_text_mode:"on_focus"
+                icon_right:"account"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+            MDTextField:
+                id:password
+                hint_text:"Password"
+                icon_right:"eye-off"
+                helper_text:"Password Gabole Kosong"
+                helper_text_mode:"on_focus"
+                size_hint_x:None
+                width:200
+                font_size:18
+                pos_hint:{"center_x":0.5}
+                password:True
+            MDRoundFlatButton:
+                text:"Login"
+                font_size:12
+                pos_hint:{"center_x":0.5}
+                on_press: screen_manager.current='screen2'
+            MDRoundFlatButton:
+                text:"Daftar"
+                font_size:12
+                pos_hint:{"center_x":0.5}
+                on_press: app.logger()
+    Screen:
+        name:"screen2"
+        BoxLayout
+            orientation : 'vertical'
+            MDToolbar:
+                title:"Pembukuan Otomatis"
+                left_action_items:[["menu",lambda x : nav_drawer.toggle_nav_drawer()]] #<<icon #hiraukan lambda
+                right_action_items:[["clock",lambda x : app.navigation_draw()]] #<<icon
+                elevation:12
+            MDLabel:
+                text: "konten dsni "
+                halign: "center"
+            MDBottomAppBar:
+                MDToolbar:
+                    title:"help?"
+                    left_action_items:[["account-star",lambda x : app.navigation_draw()]] #<<icon #hiraukan lambda
+                    mode:'end' #posisi android (free-end, end)
+                    type:"bottom"
+                    icon : 'language-python'
+                            #on_action_button : app.navigation_draw() itu untuk kalau simbolnya diteken akan trigger
+                    elevation:12
+        MDNavigationDrawer:
+            id:nav_drawer
+            BoxLayout:
+                orientation:'vertical'
+                spacing : '8dp'
+                padding : '8dp' #spasi di image sama label
+
+                Image:
+                    source:'acai.jpg'
+                MDLabel:
+                    text:"  kevin"
+                    fontstyle:"Subtitle1"
+                    size_hint_y:None
+                    height:self.texture_size[1]
+
+                MDLabel:
+                    text:"  abcd @gmail.com"
+                    fontstyle:"Caption"
+                    size_hint_y:None
+                    height:self.texture_size[1]
+
+                ScrollView:   #buattampilan jadi keatas smua
+                    MDList:
+                        OneLineIconListItem:
+                            text:"Panduan"
+                            IconLeftWidget:
+                                icon: 'account-supervisor-circle'
+                        OneLineIconListItem:
+                            text:"List Barang"
+                            on_press:app.list_barang()
+                            IconLeftWidget:
+
+                                icon: 'arrange-send-to-back'
+                        OneLineIconListItem:
+                            text:"Log Out"
+                            on_press:screen_manager.current='screen1'
+                            IconLeftWidget:
+                                icon: 'logout-variant'
+

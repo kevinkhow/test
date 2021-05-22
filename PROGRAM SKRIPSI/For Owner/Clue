@@ -1,0 +1,17 @@
+
+Button
+
+# Button kalau on_realase artinya kalau diteken
+# KALAU MAU UBAH WARNA SESUAI MD LABEL
+# KALAU MAU SESUAI RGB (WARNA RGB red/255,green/255,blue/255
+# label = MDLabel(text="Hello world", halign="center",theme_text_color="Custom",
+#                  text_color=(0,1,0,1)) <<<< red,green,blue,show to screen
+
+# label = MDIcon(icon="language-python", halign="center")
+
+# b = MDFloatingActionButton(icon='android',
+#pos_hint={'center_x': 0.5, 'center_y': 0.5})
+
+
+DEF
+kalau referensi def lain jgn lupa pake self. di button atau apapun yg ingin ditrigger
